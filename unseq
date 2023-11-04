@@ -1,0 +1,35 @@
+#!/usr/bin/awk -f
+{
+	if (l>0) {
+		if (ld==0) {
+			if ($1==l) {
+				if (dd++==0) 
+					printf "!"
+			} 
+			else {
+				ld=$1-l; printf "-"
+			}
+		} 
+		else {
+			if ($1-l!=ld) {
+				if (ld==0) 
+					print "*"dd; 
+				else if (ld>1) 
+					print l, "(/"ld")";
+				else 
+					print l;
+				printf $1; ld=0; dd=0
+			}
+		} 
+	} 
+	else {
+		printf $1; ld=0
+	} 
+	l=$1
+} 
+END {
+	if (dd>0) 
+		print "*" dd; 
+	else 
+		print l
+}
