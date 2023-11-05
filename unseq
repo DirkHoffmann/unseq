@@ -1,36 +1,45 @@
 #!/usr/bin/awk -f
 # Dirk Hoffmann, 2018-2023
+/[^0-9]/ {print; next} # Ignore non-digit lines
+BEGIN {SEP=" "}
 {
-	if (l>0) {
-		if (ld==0) {
-			if ($1==l) {
-				if (dd++==0) 
-					printf " *"
-			} 
-			else {
-				ld=$1-l; printf "-"
+	if (l>0) { # There was a previous line (with value l).
+		if (ld==0) { # No difference has been identified (from at least 2 previous lines).
+			if ($1==l) { # Duplicate!
+				if (dd++==0)  # first duplicate (or just count up)
+					printf SEP"*"
 			}
-		} 
+			else { # Calculate difference/modulus w/r to last value
+				if (dd>0) {
+					print dd+1; printf $1; dd=0; ld=0
+				}
+				else {
+					printf "-"; ld=$1-l
+				}
+			}
+		}
 		else {
-			if ($1-l!=ld) {
-				if (ld==0) 
-					print dd+1; 
-				else if (ld>1) 
-					print l, "(/"ld")";
-				else 
+			if ($1-l!=ld) { # not the same interval as before
+				if (ld==0) # no difference == duplicates
+					print dd+1;
+				else if (ld>1) # difference: print modulus
+					print l SEP"/"ld;
+				else
 					print l;
 				printf $1; ld=0; dd=0
 			}
-		} 
-	} 
+		}
+	}
 	else {
 		printf $1; ld=0
-	} 
+	}
 	l=$1
-} 
+}
 END {
-	if (dd>0) 
-		print dd+1; 
-	else 
+	if (dd>0)
+		print dd+1
+	else if (ld>0)
 		print l
+	else
+		print ""
 }
