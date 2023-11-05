@@ -14,7 +14,7 @@ Not-number lines are ignored, but printed out.
 
 ### Known limits
 
-Works on a list of numbers given line by line. Use other tools to cut our lines, if you have a multi-number lines type of input.
+Works on a list of numbers given line by line. Use other tools to cut your lines, if you have a multi-number lines type of input.
 
 ## Install
 
