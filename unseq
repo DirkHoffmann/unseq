@@ -1,9 +1,9 @@
 #!/usr/bin/awk -f
 # Dirk Hoffmann, 2018-2024
 /[^0-9 ]/ {print; next} # Ignore non-digit (or space) lines
-BEGIN {SEP=" "}
+BEGIN {SEP=" "; l="None"}
 {
-	if (l>0) { # There was a previous line (with value l).
+	if (l!="None") { # There was a previous line (with value l).
 		if (ld==0) { # No difference has been identified (from at least 2 previous lines).
 			if ($1==l) { # Duplicate!
 				if (dd++==0)  # first duplicate (or just count up)
