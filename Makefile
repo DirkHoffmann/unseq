@@ -12,4 +12,5 @@ tests:
 	(echo "=== Text in file ==="; seq 100 ) | $U
 	(for i in 1 53 53 53 54; do echo $$i; done) | $U
 	seq 4 4 80 | $U
+	(echo ' 1'; echo '2 '; echo 3) | $U
 	

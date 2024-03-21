@@ -1,6 +1,6 @@
 #!/usr/bin/awk -f
 # Dirk Hoffmann, 2018-2024
-/[^0-9]/ {print; next} # Ignore non-digit lines
+/[^0-9 ]/ {print; next} # Ignore non-digit (or space) lines
 BEGIN {SEP=" "}
 {
 	if (l>0) { # There was a previous line (with value l).
