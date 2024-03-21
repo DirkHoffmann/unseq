@@ -1,5 +1,5 @@
 #!/usr/bin/awk -f
-# Dirk Hoffmann, 2018-2023
+# Dirk Hoffmann, 2018-2024
 /[^0-9]/ {print; next} # Ignore non-digit lines
 BEGIN {SEP=" "}
 {
@@ -38,6 +38,8 @@ BEGIN {SEP=" "}
 END {
 	if (dd>0)
 		print dd+1
+	else if (ld>1)
+		print l SEP"/"ld;
 	else if (ld>0)
 		print l
 	else
