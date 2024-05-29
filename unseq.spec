@@ -1,7 +1,7 @@
 # RPMBUILD file for distribution of unseq tool
 # Dirk Hoffmann, 2024
-%define git_desc %(git describe --abbrev=4 --dirty --always --tags | sed 's/^[^-]*-//g;s/-/\./g')
-%define git_vers %(git describe --abbrev=4 --dirty --always --tags | sed 's/^v//;s/-.*//')
+%define git_vers %(git describe --abbrev=4 --always --tags | sed 's/^v//;s/-.*//')
+%define git_desc %(git describe --abbrev=4 --dirty --always --tags | sed 's/^[^-]*//g;s/^-//;s/-/\./g;s/^$/0/')
 Name:    unseq
 Version: %{git_vers}
 Release: %{git_desc}%{?dist}
