@@ -18,16 +18,21 @@ Works on a list of numbers given line by line. Use other tools to cut your lines
 
 ## Install
 
-This tool can by installed standalone in any directory, which is part of the `$PATH` variable, e.g. `~/.local/bin/`, `~/bin`, `/usr/local/bin`, `/usr/bin`, ….
-A cleaner, more standard way should be provided in the future.
+This tool can be installed standalone in any directory, which is part of the `$PATH` variable, e.g. `~/.local/bin/`, `~/bin`, `/usr/local/bin`, `/usr/bin`, ….
+A cleaner, more standard way should be provided in the future for standard distributions, 
+unless we can find a more appropriate place like a suite of commandline tools for Linux, 
+which accepts `unseq` among them.
 
 ### Prerequisite
 
-Only prerequisite is the installation of `awk`.
+The only prerequisite is the installation of `awk`.
 
 ## Design
 
-As sequences of numbers can be generated 
+Any sequence of numbers that can be generated with `seq` or an equivalent tool or a sequence of 
+calls to it, should be recognised and correctly translated back by `unseq`.
+
+The input is expected in decimal number form, one number per line (like `seq` output).
 
 ## Contribute
 
