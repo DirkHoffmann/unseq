@@ -2,7 +2,8 @@ Package: unseq
 Version: 1.0
 Maintainer: Dirk Hoffmann <hoffmann@cppm.in2p3.fr>
 Architecture: all
-Depends: yum sed
+Build-Depends: sed, git
+Depends: awk
 Description: UNSEQ - revert a sequence (of numbers) to rules
  A simple Unix tool to describe a list of numbers (typically, if it is too long
  for visual inspection), like the output of one or more seq commands, by a set

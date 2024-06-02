@@ -28,10 +28,13 @@ install:
 package:
 	rpmbuild -ba unseq.spec
 
+DEBBUILD=BUILD
 deb-package:
-	mkdir BUILD
-	cp -r DEBIAN BUILD
-	mkdir -p BUILD/usr/bin
-	cp unseq BUILD/usr/bin
-	dpkg-deb --build BUILD
+	mkdir $(DEBBUILD)
+	cp -r DEBIAN $(DEBBUILD)
+	mkdir -p $(DEBBUILD)/usr/bin
+	cp unseq $(DEBBUILD)/usr/bin
+	dpkg-deb --build $(DEBBUILD)
+	mv $(DEBBUILD).deb unseq.deb 
+	rm -r $(DEBBUILD)
 	
