@@ -26,7 +26,7 @@ jobs:
         mv unseq.deb downloads
 
     - name: Use Upload Artifact GitHub Action
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: assets-for-downloads
         path: downloads
