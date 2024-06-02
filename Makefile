@@ -27,4 +27,8 @@ install:
 
 package:
 	rpmbuild -ba unseq.spec
+
+deb-package:
+	dpkg-deb --build ../unseq
+	mv ../unseq.deb .
 	

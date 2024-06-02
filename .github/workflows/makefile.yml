@@ -17,8 +17,5 @@ jobs:
     - name: Run test
       run: make tests
 
-    - name: Install RPM packages
-      run: sudo apt-get install -y git sed
-
-    - name: Create package
-      run: make package
+    - name: Create Debian package
+      run: make deb-package
