@@ -25,3 +25,15 @@ jobs:
       with:
         name: unseq
         path: unseq.deb
+
+    - name: build RPM package
+      id: rpm
+      uses: naveenrajm7/rpmbuild@master
+      with:
+        spec_file: "RPM/unseq.spec"
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Binary RPM
+        path: ${{ steps.rpm.outputs.rpm_dir_path }}
