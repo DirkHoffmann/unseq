@@ -29,8 +29,9 @@ package:
 	rpmbuild -ba unseq.spec
 
 deb-package:
-	mkdir -p DEBIAN/usr/bin
-	cp unseq DEBIAN/usr/bin
-	dpkg-deb --build ../unseq
-	mv ../unseq.deb .
+	mkdir BUILD
+	cp -r DEBIAN BUILD
+	mkdir -p BUILD/usr/bin
+	cp unseq BUILD/usr/bin
+	dpkg-deb --build BUILD
 	
