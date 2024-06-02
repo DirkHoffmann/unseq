@@ -4,6 +4,6 @@ Maintainer: Dirk Hoffmann <hoffmann@cppm.in2p3.fr>
 Architecture: all
 Description: UNSEQ - revert a sequence (of numbers) to rules
  A simple Unix tool to describe a list of numbers (typically, if it is too long
-for visual inspection), like the output of one or more seq commands, by a set
-of rules, similar to what the seq commands would take to regenerate the same
-list.
+ for visual inspection), like the output of one or more seq commands, by a set
+ of rules, similar to what the seq commands would take to regenerate the same
+ list.
