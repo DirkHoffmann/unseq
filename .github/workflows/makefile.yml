@@ -17,5 +17,5 @@ jobs:
     - name: Run test
       run: make tests
 
-    - name: Create package
-      run: make package
+#    - name: Create package
+#      run: make package
