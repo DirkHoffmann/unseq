@@ -1,0 +1,39 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Run test
+      run: make tests
+
+    - name: Create Debian package
+      run: make deb-package
+
+    - name: Use Upload Artifact GitHub Action
+      uses: actions/upload-artifact@v4
+      with:
+        name: unseq
+        path: unseq.deb
+
+    - name: build RPM package
+      id: rpm
+      uses: naveenrajm7/rpmbuild@master
+      with:
+        spec_file: "RPM/unseq.spec"
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Binary RPM
+        path: ${{ steps.rpm.outputs.rpm_dir_path }}
