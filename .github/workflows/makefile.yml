@@ -18,7 +18,7 @@ jobs:
       run: make tests
 
     - name: Install RPM packages
-      run: sudo dnf install git sed
+      run: sudo apt-get install -y git sed
 
     - name: Create package
       run: make package
